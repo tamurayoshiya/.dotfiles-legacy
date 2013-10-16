@@ -1,0 +1,247 @@
+# --------------------------------------------------------------
+
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="risto"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# --------------------------------------------------------------
+# --------------------- 一般設定
+# --------------------------------------------------------------
+
+
+## 環境変数の設定
+export LANG=ja_JP.UTF-8
+export PATH="/usr/local/mysql/bin:$PATH"
+
+## 履歴
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=100000
+
+# 補完機能の強化
+autoload -U compinit
+compinit -u
+# プロンプトの設定
+autoload colors
+colors
+# コアダンプサイズを制限
+limit coredumpsize 102400
+# 出力の文字列末尾に改行コードが無い場合でも表示
+unsetopt promptcr
+# 色を使う
+setopt prompt_subst
+# ビープを鳴らさない
+setopt nobeep
+# 内部コマンド jobs の出力をデフォルトで jobs -l にする
+setopt long_list_jobs
+# 補完候補一覧でファイルの種別をマーク表示
+setopt list_types
+# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt auto_resume
+# 補完候補を一覧表示
+setopt auto_list
+# 補完候補を詰めて表示
+setopt list_packed
+# 直前と同じコマンドをヒストリに追加しない
+setopt hist_ignore_dups
+# cd 時に自動で push
+setopt autopushd
+# 同じディレクトリを pushd しない
+setopt pushd_ignore_dups
+# ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
+setopt extended_glob
+# TAB で順に補完候補を切り替える
+setopt auto_menu
+# zsh の開始, 終了時刻をヒストリファイルに書き込む
+setopt extended_history
+# =command を command のパス名に展開する
+setopt equals
+# --prefix=/usr などの = 以降も補完
+setopt magic_equal_subst
+# ヒストリを呼び出してから実行する間に一旦編集
+setopt hist_verify
+# ファイル名の展開で辞書順ではなく数値的にソート
+setopt numeric_glob_sort
+# 出力時8ビットを通す
+setopt print_eight_bit
+# ヒストリを共有
+setopt share_history
+# ディレクトリ名だけで cd
+setopt auto_cd
+# カッコの対応などを自動的に補完
+setopt auto_param_keys
+# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
+# スペルチェック
+setopt correct
+# 最後のスラッシュを自動的に削除しない
+setopt noautoremoveslash
+
+# 補完候補のカーソル選択を有効に
+zstyle ':completion:*:default' menu select=1
+
+# 補完候補の色づけ
+export LSCOLORS=ExFxCxdxBxegedabagacad
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# sudo に対して環境変数 PATH を継承させる設定
+alias sudo='sudo env PATH=$PATH'
+
+# -u を認識しなくて、userを変更してコマンドが実行できないため
+# http://d.hatena.ne.jp/japanrock_pg/20090527/1243426081
+export PATH=/usr/local/bin:$PATH
+alias sudo="sudo PATH=$PATH"
+
+# --------------------------------------------------------------
+# --------------------- 拡張設定
+# --------------------------------------------------------------
+
+
+# SSH agentを起動
+# ssh-add ~/.ssh/id_dsa で鍵とパスフレーズを紐つけて登録
+echo -n "ssh-agent: "
+if [ -e ~/.ssh-agent-info ]; then
+    source ~/.ssh-agent-info
+fi
+
+ssh-add -l >&/dev/null
+if [ $? = 2 ] ; then
+    echo -n "ssh-agent: restart...."
+    ssh-agent >~/.ssh-agent-info
+    source ~/.ssh-agent-info
+fi
+
+if ssh-add -l >&/dev/null ; then
+    echo "ssh-agent: Identity is already stored."
+else
+    ssh-add
+fi
+
+# mosh
+# known_hostsを使ってエイリアス名の入力補完をしたい場合は、
+# .zshrcに以下を追記するとsshを使うときと同様にサーバのエイリアス名の補完機能を使えるようになります。
+compdef mosh=ssh
+
+
+# Z
+# http://qiita.com/takc923/items/36ace951569160068527
+# https://github.com/rupa/z
+
+source ~/.dotfiles/lib/z/z.sh
+
+# --------------------------------------------------------------
+# --------------------- エイリアス
+# --------------------------------------------------------------
+
+
+## エイリアス - 一般
+setopt complete_aliases
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+alias ls="ls -G -w"
+;;
+linux*)
+alias ls="ls --color"
+;;
+esac
+alias l="ls -lah"
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -lh"
+alias du="du -h"
+alias df="df -h"
+
+## エイリアス - tmux
+alias tm="tmux a"
+alias tmn="tmux new -s"
+alias tig="tig --all"
+
+## エイリアス - git
+alias gco="git checkout"
+alias gst="git status"
+alias gci="git commit -a"
+alias gdi="git diff"
+alias gbr="git branch"
+
+## 上書き確認
+
+alias mv='mv -i'
+alias cp='cp -i'
+
+# --------------------------------------------------------------
+# --------------------- コマンド
+# --------------------------------------------------------------
+
+
+# コミット間の差分を取得して、zipで固める
+# --format=zip を付けるとzipで固めてくれます。
+# --prefix=root/ は抽出したファイルをrootディレクトリに入れた状態にしてくれます。
+# -o archive.zip で出力先と出力名を指定しています。
+# 引数なしで git_diff_archive と呼ぶと HEAD を丸っとzipにします。
+# 引数に数値を指定すると、HEAD と HEAD~数値 の差分を抽出します。
+# 引数にコミット識別子(IDとかHEADとかHEAD^とかdiffの引数として使えるもの)を指定すると、
+# HEAD と コミット識別子 の差分を抽出します。)
+# コミット識別子を2つ渡すと、その2つのコミットの差分を抽出します。
+# ちょっと前のバージョンの差分が欲しいとか言われたときに使えます。
+# 渡す順番は新しいコミット、古いコミットの順番で渡してください。
+# http://qiita.com/kaminaly/items/28f9cb4e680deb700833
+
+function git_diff_archive() 
+{
+    local diff=""
+    local h="HEAD"
+    if [ $# -eq 1 ]; then
+        if expr "$1" : '[0-9]*' > /dev/null ; then
+            diff="HEAD HEAD~${1}"
+        else
+            diff="HEAD ${1}"
+        fi
+    elif [ $# -eq 2 ]; then
+        diff="${1} ${2}"
+        h=$1
+    fi
+    if [ "$diff" != "" ]; diff="git diff --name-only ${diff}"
+    git archive --format=zip --prefix=root/ $h `eval $diff` -o archive.zip
+}
+
+# rmコマンド実行時に、ファイルを削除するのではなく、
+# /tmp/.trash/[user]ディレクトリに移動する
+function soft_rm()
+{
+    # /tmp/.trashディレクトリがない場合作成
+    if [ ! -d /tmp/.trash ] ; then
+        mkdir /tmp/.trash
+    fi
+    # /tmp/.trashにユーザーのディレクトリがない場合作成
+    if [ ! -d /tmp/.trash/$USER ] ; then
+        mkdir /tmp/.trash/$USER
+    fi
+    # /tmp/.trash/[user]に日付のディレクトリがない場合作成
+    d="`date +%Y%m%d`"
+    if [ ! -d /tmp/.trash/$USER/$d ] ; then
+        mkdir /tmp/.trash/$USER/$d
+    fi
+    # 引数のファイルを/tmp/.trash/[ユーザー名に移動]
+    for file in $@
+    do
+        mv $file /tmp/.trash/$USER/$d
+    done
+}
+alias rm="soft_rm"
+

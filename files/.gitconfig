@@ -1,0 +1,21 @@
+[user]
+	name = TAMURA Yoshiya
+	email = a@qmu.jp
+[merge]
+    keepBackup = false;
+[core]
+	quotepath = false
+	editor = vim -c \"set fenc=utf-8\"
+	excludesfile = /home/y_tamura/.gitignore
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[tig "bind"]
+    generic = g move-first-line
+    generic = G move-last-line
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
