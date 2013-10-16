@@ -104,8 +104,8 @@ alias sudo='sudo env PATH=$PATH'
 
 # -u を認識しなくて、userを変更してコマンドが実行できないため
 # http://d.hatena.ne.jp/japanrock_pg/20090527/1243426081
-export PATH=/usr/local/bin:$PATH
-alias sudo="sudo PATH=$PATH"
+#export PATH=/usr/local/bin:$PATH
+#alias sudo="sudo PATH=$PATH"
 
 # --------------------------------------------------------------
 # --------------------- 拡張設定
