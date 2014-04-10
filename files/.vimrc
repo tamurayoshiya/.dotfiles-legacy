@@ -84,8 +84,8 @@ set softtabstop=4
 set shiftwidth=4
 
 "HTMLのインデントを無効にする.
-autocmd FileType html set indentexpr&
-autocmd FileType xhtml set indentexpr&
+"autocmd FileType html set indentexpr&
+"autocmd FileType xhtml set indentexpr&
 
 "閉じタグ補完
 inoremap { {}<LEFT>

@@ -184,6 +184,9 @@ alias gbr="git branch"
 alias mv='mv -i'
 alias cp='cp -i'
 
+## git-archive-all
+alias git-archive-all='~/.dotfiles/git-archive-all'
+
 # --------------------------------------------------------------
 # --------------------- コマンド
 # --------------------------------------------------------------
