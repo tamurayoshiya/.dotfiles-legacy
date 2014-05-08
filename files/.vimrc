@@ -10,6 +10,9 @@ call pathogen#helptags()
 set t_Co=256
 syntax on
 
+autocmd ColorScheme * highlight LineNr term=underline ctermfg=0 ctermbg=232 guibg=#465457
+autocmd ColorScheme * highlight Visual term=reverse ctermbg=206 guibg=#403D3D
+
 if !exists("colors_name")
     colorscheme molokai
 endif
