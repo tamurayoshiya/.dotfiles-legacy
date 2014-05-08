@@ -68,10 +68,10 @@ set smartcase
 set backspace=start,eol,indent
 
 "画面分割時にcontrol + l, h, j, kで移動
-map <C-j> <C-W>j<C-w>_
-map <C-k> <C-W>k<C-w>_
-map <C-h> <C-w>h<C-w>_
-map <C-l> <C-w>l<C-w>_
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
@@ -296,5 +296,4 @@ endfunction
 
 let g:endtagcommentFormat = '<!-- /%id%class -->'
 nnoremap ,t :<C-u>call Endtagcomment()<CR>
-
 
