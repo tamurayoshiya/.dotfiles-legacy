@@ -17,6 +17,8 @@ if !exists("colors_name")
     colorscheme molokai
 endif
 
+" Set to auto read when a file is changed from the outside
+set autoread
 "新しい行のインデントを現在行と同じにする
 set autoindent
 "バックアップファイルを作るディレクトリ
@@ -45,8 +47,6 @@ set listchars=eol:$,tab:>\ ,extends:<
 set number
 "シフト移動幅
 "set shiftwidth=4
-"閉じ括弧が入力されたとき、対応する括弧を表示する
-set showmatch
 "検索時に大文字を含んでいたら大/小を区別
 set smartcase
 "新しい行を作ったときに高度な自動インデントを行う
@@ -66,6 +66,21 @@ set smartcase
 "set formatoptions+=r
 "インサートモードでバックスペースで削除出来るように
 set backspace=start,eol,indent
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+" Turn on the WiLd menu
+set wildmenu
+set wildmode=longest,list,full
+"Always show current position
+set ruler
+" Highlight search results
+set hlsearch
+" Show matching brackets when text indicator is over them
+set showmatch 
+" How many tenths of a second to blink when matching brackets
+set mat=2"
+" Add a bit extra margin to the left
 
 "画面分割時にcontrol + l, h, j, kで移動
 map <C-j> <C-W>j
