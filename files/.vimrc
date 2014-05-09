@@ -227,6 +227,79 @@ endfunction
 nnoremap <silent><Space>fo : <C-u>Unite -vertical -winwidth=40 outline<CR>
 
 " --------------------------------------------------------------
+" --------------------- 拡張設定 (vim-indent-guides)
+" --------------------------------------------------------------
+
+" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=1
+" 自動カラーを無効にする
+let g:indent_guides_auto_colors=0
+" 奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=234
+" 偶数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#393939 ctermbg=235
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent = 100
+" ガイドの幅
+let g:indent_guides_guide_size = 1
+
+" --------------------------------------------------------------
+" --------------------- 拡張設定 (cake-vim)
+" --------------------------------------------------------------
+
+let g:cakephp_enable_auto_mode = 1
+
+" バッファで開くキーバインド設定
+nnoremap <Space>cc :Ccontroller
+nnoremap <Space>cm :Cmodel
+nnoremap <Space>cv :Cview
+nnoremap <Space>cvw :Ccontrollerview
+nnoremap <Space>cs :Cshell
+nnoremap <Space>ct :Ctask
+nnoremap <Space>ccf :Cconfig
+nnoremap <Space>ccp :Ccomponent
+nnoremap <Space>cl :Clog
+
+" splitで開くキーバインド設定
+nnoremap <Space>ccs :Ccontrollersp 
+nnoremap <Space>cms :Cmodelsp
+nnoremap <Space>cvs :Cviewsp
+nnoremap <Space>cvws :Ccontrollerviewsp
+nnoremap <Space>ccfs :Cconfigsp
+nnoremap <Space>ccps :Ccomponentsp
+
+" vsplitで開くキーバインド設定
+nnoremap <Space>ccv :Ccontrollervsp
+nnoremap <Space>cmv :Cmodelvsp
+nnoremap <Space>cvv :Cviewvsp
+nnoremap <Space>cvwv :Ccontrollerviewvsp
+nnoremap <Space>ccfv :Cconfigvsp
+nnoremap <Space>ccpv :Ccomponentvsp
+
+" --------------------------------------------------------------
+" --------------------- 拡張設定 (neosnippet)
+" --------------------------------------------------------------
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
+
+" 自分用 snippet ファイルの場所
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.dotfiles/files/.vim/snippets/'
+
+" --------------------------------------------------------------
 " --------------------- 拡張設定 (その他)
 " --------------------------------------------------------------
 
@@ -311,4 +384,9 @@ endfunction
 
 let g:endtagcommentFormat = '<!-- /%id%class -->'
 nnoremap ,t :<C-u>call Endtagcomment()<CR>
+
+
+
+
+
 
