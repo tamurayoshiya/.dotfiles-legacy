@@ -3,10 +3,9 @@ call pathogen#incubate()
 call pathogen#helptags()
 
 " --------------------------------------------------------------
-" --------------------- 一般設定
+" --------------------- 配色
 " --------------------------------------------------------------
 
-" 色
 set t_Co=256
 syntax on
 
@@ -16,6 +15,10 @@ autocmd ColorScheme * highlight Visual term=reverse ctermbg=206 guibg=#403D3D
 if !exists("colors_name")
     colorscheme molokai
 endif
+
+" --------------------------------------------------------------
+" --------------------- 一般設定
+" --------------------------------------------------------------
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -116,6 +119,15 @@ vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
+
+" gitu
+nnoremap gu :Gitu<CR>
+" gitv
+autocmd FileType git :setlocal foldlevel=99
+nnoremap gv :Gitv<CR>
+"fugitive
+nnoremap gst :Gstatus<CR>
+
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
@@ -250,6 +262,7 @@ let g:indent_guides_guide_size = 1
 " --------------------------------------------------------------
 
 let g:cakephp_enable_auto_mode = 1
+let g:cakephp_enable_fix_mode = 1
 
 " バッファで開くキーバインド設定
 nnoremap <Space>cc :Ccontroller
