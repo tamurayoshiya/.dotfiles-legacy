@@ -317,7 +317,7 @@ let g:neosnippet#snippets_directory='~/.dotfiles/files/.vim/snippets/'
 " --------------------------------------------------------------
 
 " neocomplcache(コード補完)を有効化
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 0
 
 " zencodingの設定
 let g:user_emmet_expandabbr_key = '<c-e>'
