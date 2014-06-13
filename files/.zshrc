@@ -1,3 +1,7 @@
+## 文字コードの設定
+export LANG=ja_JP.UTF-8
+export PATH="/usr/local/mysql/bin:$PATH"
+
 # --------------------------------------------------------------
 
 # Path to your oh-my-zsh configuration.
@@ -23,13 +27,6 @@ source $ZSH/oh-my-zsh.sh
 # --------------------------------------------------------------
 # --------------------- 一般設定
 # --------------------------------------------------------------
-
-
-## 環境変数の設定
-export LANG=ja_JP.UTF-8
-export PATH="/usr/local/mysql/bin:$PATH"
-export LC_CTYPE=C 
-export LANG=C
 
 ## 履歴
 HISTFILE=$HOME/.zsh-history
