@@ -28,6 +28,8 @@ source $ZSH/oh-my-zsh.sh
 ## 環境変数の設定
 export LANG=ja_JP.UTF-8
 export PATH="/usr/local/mysql/bin:$PATH"
+export LC_CTYPE=C 
+export LANG=C
 
 ## 履歴
 HISTFILE=$HOME/.zsh-history
