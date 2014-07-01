@@ -177,7 +177,8 @@ alias tig="tig --all"
 ## エイリアス - git
 alias gco="git checkout"
 alias gst="git status"
-alias gci="git commit -a"
+alias gad="git add ."
+alias gc="git commit"
 alias gdi="git diff"
 alias gbr="git branch"
 
