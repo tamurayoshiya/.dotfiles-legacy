@@ -58,3 +58,6 @@
 [submodule "files/.vim/bundle/gitu"]
 	path = files/.vim/bundle/gitu
 	url = https://github.com/pebble8888/gitu.vim.git
+[submodule "files/.vim/bundle/vim-less"]
+	path = files/.vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
