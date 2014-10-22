@@ -246,7 +246,11 @@ function soft_rm()
     # 引数のファイルを/tmp/.trash/[ユーザー名に移動]
     for file in $@
     do
-        mv $file /tmp/.trash/$USER/$d
+        fn=$file
+        fnf=`date '+%y%m%d%H%M%S'`
+        fnc="${fnf}_${fn}"
+        mv $file /tmp/.trash/$USER/$d/$fnc
+        
     done
 }
 alias rm="soft_rm"
