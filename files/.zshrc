@@ -1,6 +1,6 @@
 ## 文字コードの設定
 export LANG=ja_JP.UTF-8
-export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/mysql/bin:/sbin:$PATH"
 
 # --------------------------------------------------------------
 
@@ -258,8 +258,9 @@ function soft_rm()
     for file in $@
     do
         fn=$file
+        fn2=${fn//\//___}
         fnf=`date '+%y%m%d%H%M%S'`
-        fnc="${fnf}_${fn}"
+        fnc="${fnf}_${fn2}"
         mv $file /tmp/.trash/$USER/$d/$fnc
         
     done
