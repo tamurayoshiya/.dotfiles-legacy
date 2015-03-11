@@ -1,13 +1,17 @@
 snippet p
-abbr <?php ${1:target} ?>
-    <?php ${1:target} ?>
+	<?php ${1} ?>
 
 snippet a
-abbr array( ${1:target} )
-    array(${1:target})
+	array(${1})
 
 snippet e
-    empty(${1})
+	empty(${1})
+
+snippet d
+	debug(${1});
+
+snippet dc
+	<?php debug(${1}); ?>
 
 snippet set
 	$this->set(compact(
