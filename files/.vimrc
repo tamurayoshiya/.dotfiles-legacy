@@ -130,7 +130,8 @@ autocmd FileType git :setlocal foldlevel=99
 nnoremap gv :Gitv<CR>
 "fugitive
 nnoremap gst :Gstatus<CR>
-
+"インサートモードでjjを押下するとESC相当
+inoremap <silent> jj <ESC>
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
@@ -400,9 +401,5 @@ endfunction
 
 let g:endtagcommentFormat = '<!-- /%id%class -->'
 nnoremap ,t :<C-u>call Endtagcomment()<CR>
-
-
-
-
 
 
