@@ -132,6 +132,7 @@ nnoremap gv :Gitv<CR>
 nnoremap gst :Gstatus<CR>
 "インサートモードでjjを押下するとESC相当
 inoremap <silent> jj <ESC>
+inoremap <silent> <C-j> <ESC>
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
@@ -315,6 +316,7 @@ endif
 " 自分用 snippet ファイルの場所
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.dotfiles/files/.vim/snippets/'
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (その他)

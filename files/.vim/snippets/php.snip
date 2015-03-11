@@ -5,3 +5,78 @@ abbr <?php ${1:target} ?>
 snippet a
 abbr array( ${1:target} )
     array(${1:target})
+
+snippet e
+    empty(${1})
+
+snippet set
+	$this->set(compact(
+		'${1:target}'
+	));
+
+snippet foreach
+	foreach (${1:args} as ${2:arg}) {
+		${3}
+	}
+
+snippet if
+	if (${1:conditions}) {
+		${2}
+	}
+
+snippet foreach_ctp
+	<?php foreach (${1:args} as ${2:arg}): ?>
+		${3}
+	<?php endforeach ?>
+
+snippet if_ctp
+	<?php if (${1:conditions}): ?>
+		${2}
+	<?php endif ?>
+
+snippet element
+	<?php echo $this->element(
+		'${1:element_name}',
+		array(
+		    ${2:args}
+		)
+	); ?>
+
+snippet data
+	$this->request->data['${1:model}']['${2:field}']
+
+snippet find
+	$this->find(
+		'${1:type}',
+		array(
+			'conditions' => array(
+				${2:conditions}
+			),
+		)
+	);
+
+snippet public
+	/**
+	 * ${1:comment}
+	 *
+	 * @access public
+	 * @param
+	 * @return
+	 */
+	 public function ${2:func_name} ()
+	 {
+		${3}
+	 }
+
+snippet private
+	/**
+	 * ${1:comment}
+	 *
+	 * @access private
+	 * @param
+	 * @return
+	 */
+	 private function ${2:func_name} ()
+	 {
+		${3}
+	 }
