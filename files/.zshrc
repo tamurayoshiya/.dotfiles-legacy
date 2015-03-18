@@ -23,6 +23,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# nodebrewへのパス
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # --------------------------------------------------------------
 # --------------------- 一般設定
