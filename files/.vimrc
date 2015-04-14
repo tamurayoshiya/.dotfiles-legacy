@@ -132,7 +132,8 @@ nnoremap gv :Gitv<CR>
 nnoremap gst :Gstatus<CR>
 "インサートモードでjjを押下するとESC相当
 inoremap <silent> jj <ESC>
-inoremap <silent> <C-j> <ESC>
+"インサートモードでcountrol + jを押下するとESC + l相当
+inoremap <silent> <C-j> <ESC>l
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
