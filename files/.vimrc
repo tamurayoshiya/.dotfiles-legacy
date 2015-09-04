@@ -134,9 +134,10 @@ nnoremap gst :Gstatus<CR>
 inoremap <silent> jj <ESC>
 "インサートモードでcountrol + jを押下するとESC + l相当
 inoremap <silent> <C-j> <ESC>l
-
 "勝手に改行させない
 set formatoptions=q
+" coffeeの場合インデント2
+autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
