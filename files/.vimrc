@@ -13,11 +13,13 @@ set t_Co=256
 syntax on
 
 "autocmd ColorScheme * highlight LineNr term=underline ctermfg=0 ctermbg=232 guibg=#465457
-autocmd ColorScheme * highlight Visual term=reverse ctermbg=206 guibg=#403D3D
+""autocmd ColorScheme * highlight Visual term=reverse ctermbg=206 guibg=#403D3D
 
 if !exists("colors_name")
     colorscheme molokai
 endif
+" iTerm2で半透明にしているが、vimのcolorschemeを設定すると背景も変更されるため"
+highlight Normal ctermbg=none
 
 " --------------------------------------------------------------
 " --------------------- 一般設定
@@ -408,5 +410,4 @@ endfunction
 
 let g:endtagcommentFormat = '<!-- /%id%class -->'
 nnoremap ,t :<C-u>call Endtagcomment()<CR>
-
 
