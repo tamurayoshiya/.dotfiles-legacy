@@ -279,4 +279,7 @@ function git_pull_all()
 {
     for branch in `git branch -r | grep -v HEAD | awk -F'/' '{print $2}'`; do git checkout $branch; git pull; done
 }
+
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
