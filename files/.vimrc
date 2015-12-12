@@ -140,6 +140,10 @@ inoremap <silent> <C-j> <ESC>l
 set formatoptions=q
 " coffeeの場合インデント2
 autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
+" ファイル形式の検出の有効化する
+" ファイル形式別プラグインのロードを有効化する
+" ファイル形式別インデントのロードを有効化する
+filetype plugin indent on
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
