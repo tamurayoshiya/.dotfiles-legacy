@@ -343,6 +343,7 @@ let g:user_emmet_expandword_key = '<c-e>'
 " NERD TREE
 let g:NERDTreeWinPos = "right"
 nmap <C-i> :<C-u>NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
 
 
 " syntastic
