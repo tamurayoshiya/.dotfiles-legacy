@@ -226,7 +226,7 @@ bindkey '^F^M' showMenu
 # ll を実行
 function doLL() {
     echo ll
-    ll
+    ls -l
     zle reset-prompt
 }
 zle -N doLL
@@ -240,6 +240,18 @@ function gitStatus() {
 }
 zle -N gitStatus
 bindkey '^G' gitStatus
+
+# sentaku explorerを実行
+function sentaku() {
+    echo sentaku
+    jump=`sh ~/.dotfiles/lib/sentaku/ex_explorer.sh`
+    cd $jump
+    cd ../`basename $jump`
+    ls -l
+    zle reset-prompt
+}
+zle -N sentaku
+bindkey '^F' sentaku
 
 # --------------------------------------------------------------
 # --------------------- コマンド
