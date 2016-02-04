@@ -209,6 +209,39 @@ alias cp='cp -i'
 alias git-archive-all='~/.dotfiles/git-archive-all'
 
 # --------------------------------------------------------------
+# --------------------- キーバインド
+# --------------------------------------------------------------
+
+# bin/menuスクリプトがある場合実行
+function _showMenu() {
+    if [ -e ./bin/menu ]; then
+        echo bin/menu
+        ./bin/menu
+    fi
+    zle reset-prompt
+}
+zle -N showMenu _showMenu
+bindkey '^F^M' showMenu
+
+# ll を実行
+function doLL() {
+    echo ll
+    ll
+    zle reset-prompt
+}
+zle -N doLL
+bindkey '^L' doLL
+
+# git statusを実行
+function gitStatus() {
+    echo gst
+    gst
+    zle reset-prompt
+}
+zle -N gitStatus
+bindkey '^G' gitStatus
+
+# --------------------------------------------------------------
 # --------------------- コマンド
 # --------------------------------------------------------------
 
