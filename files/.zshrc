@@ -221,7 +221,7 @@ function _showMenu() {
     zle reset-prompt
 }
 zle -N showMenu _showMenu
-bindkey '^F^M' showMenu
+bindkey '^N' showMenu
 
 # ll を実行
 function doLL() {
