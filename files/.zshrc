@@ -208,6 +208,17 @@ alias cp='cp -i'
 ## git-archive-all
 alias git-archive-all='~/.dotfiles/git-archive-all'
 
+# cd && ll
+cd() {
+    builtin cd "$@"
+    echo "success"
+}
+cdls ()
+{
+    \cd "$@" && ls -lh
+}
+alias cd="cdls"
+
 # --------------------------------------------------------------
 # --------------------- キーバインド
 # --------------------------------------------------------------
@@ -215,6 +226,7 @@ alias git-archive-all='~/.dotfiles/git-archive-all'
 # bin/menuスクリプトがある場合実行
 function _showMenu() {
     if [ -e ./bin/menu ]; then
+        exec < /dev/tty
         echo bin/menu
         ./bin/menu
     fi
@@ -243,6 +255,7 @@ bindkey '^G' gitStatus
 
 # sentaku explorerを実行
 function sentaku() {
+    exec < /dev/tty
     echo sentaku
     jump=`sh ~/.dotfiles/lib/sentaku/ex_explorer.sh`
     cd $jump
