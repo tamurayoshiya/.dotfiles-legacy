@@ -129,7 +129,6 @@ fi
 # node.js(nvm)
 if [ -e ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
-    nvm use 0.12
 fi
 
 # SSH agentを起動
