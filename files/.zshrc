@@ -41,6 +41,9 @@ compinit -u
 # プロンプトの設定
 autoload colors
 colors
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
 # コアダンプサイズを制限
 limit coredumpsize 102400
 # 出力の文字列末尾に改行コードが無い場合でも表示
