@@ -132,10 +132,10 @@ autocmd FileType git :setlocal foldlevel=99
 nnoremap gv :Gitv<CR>
 "fugitive
 nnoremap gst :Gstatus<CR>
-"インサートモードでjjを押下するとESC相当
-inoremap <silent> jj <ESC>
-"インサートモードでcountrol + jを押下するとESC + l相当
-inoremap <silent> <C-j> <ESC>l
+"インサートモードでjjを押下するとESC相当 + l相当
+inoremap <silent> jj <ESC>l
+"インサートモードでcountrol + jを押下するとESC
+inoremap <silent> <C-j> <ESC>
 "勝手に改行させない
 set formatoptions=q
 " coffeeの場合インデント2
