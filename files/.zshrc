@@ -344,6 +344,24 @@ function git_pull_all()
     for branch in `git branch -r | grep -v HEAD | awk -F'/' '{print $2}'`; do git checkout $branch; git pull; done
 }
 
+# Docker QuickStart Terminal.appへのショートカット
+function docker_quick_start()
+{
+    docker ps >/dev/null 2>&1
+    # 正常終了しない場合
+    # （dockerデーモンが起動しない場合）
+    if [ ! $? = 0 ]; then
+        start=/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh
+        if [ -e "$start" ]; then
+            "$start"
+        else
+            echo "Docker Quickstart Terminal.appが見つかりません"
+        fi
+    else
+        echo "既にDockerデーモンが起動しています"
+    fi
+}
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
