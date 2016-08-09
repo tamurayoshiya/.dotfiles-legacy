@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-cd ~/dotfiles/files/
 cd ~/.dotfiles/files/
 
 for file in `ls -a`
