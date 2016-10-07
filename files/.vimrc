@@ -21,6 +21,10 @@ endif
 " iTerm2で半透明にしているが、vimのcolorschemeを設定すると背景も変更されるため"
 highlight Normal ctermbg=none
 
+" markdownのハイライトを有効にする
+set syntax=markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " --------------------------------------------------------------
 " --------------------- 一般設定
 " --------------------------------------------------------------
