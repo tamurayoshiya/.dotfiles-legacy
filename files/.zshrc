@@ -192,6 +192,7 @@ alias lf="ls -F"
 alias ll="ls -lh"
 alias du="du -h"
 alias df="df -h"
+alias duu="du -d 1"
 
 ## エイリアス - tmux
 alias tm="tmux a"
