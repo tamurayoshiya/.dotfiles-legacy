@@ -73,3 +73,6 @@
 [submodule "files/.vim/bundle/vim-php-html"]
 	path = files/.vim/bundle/vim-php-html
 	url = https://github.com/tamurayoshiya/php.vim-html-enhanced.git
+[submodule "files/.vim/bundle/plantuml-syntax"]
+	path = files/.vim/bundle/plantuml-syntax
+	url = git@github.com:aklt/plantuml-syntax.git
