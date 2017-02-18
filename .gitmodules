@@ -76,3 +76,6 @@
 [submodule "files/.vim/bundle/plantuml-syntax"]
 	path = files/.vim/bundle/plantuml-syntax
 	url = git@github.com:aklt/plantuml-syntax.git
+[submodule "files/.vim/bundle/vim-pug"]
+	path = files/.vim/bundle/vim-pug
+	url = https://github.com/digitaltoad/vim-pug.git
