@@ -170,6 +170,11 @@ compdef mosh=ssh
 
 source ~/.dotfiles/lib/z/z.sh
 
+# gtm
+# https://github.com/git-time-metric/gtm-terminal-plugin
+
+source ~/.dotfiles/lib/.gtm-terminal-plugin/gtm-plugin.sh
+
 # --------------------------------------------------------------
 # --------------------- エイリアス
 # --------------------------------------------------------------
