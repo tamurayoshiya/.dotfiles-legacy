@@ -149,6 +149,8 @@ autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
 " ファイル形式別プラグインのロードを有効化する
 " ファイル形式別インデントのロードを有効化する
 filetype plugin indent on
+" JSONファイルのconcealを無効に
+let g:vim_json_syntax_conceal = 0
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)

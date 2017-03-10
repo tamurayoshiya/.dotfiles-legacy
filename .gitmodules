@@ -85,3 +85,6 @@
 [submodule "lib/.gtm-terminal-plugin"]
 	path = lib/.gtm-terminal-plugin
 	url = https://github.com/git-time-metric/gtm-terminal-plugin.git
+[submodule "files/.vim/bundle/vim-json"]
+	path = files/.vim/bundle/vim-json
+	url = https://github.com/elzr/vim-json.git
