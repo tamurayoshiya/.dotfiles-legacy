@@ -202,7 +202,8 @@ alias duu="du -d 1"
 ## エイリアス - tmux
 alias tm="tmux a"
 alias tmn="tmux new -s"
-alias tig='TIG_LS_REMOTE="git ls-remote . master dev develop development i*" tig'
+alias tig='tig --all'
+alias t='TIG_LS_REMOTE="git ls-remote . master dev origin/* develop development i*" tig'
 
 ## エイリアス - git
 alias gco="git checkout"
