@@ -91,3 +91,6 @@
 [submodule "files/.vim/bundle/vim-php-html-indent"]
 	path = files/.vim/bundle/vim-php-html-indent
 	url = https://github.com/berrygoudswaard/vim-php-html-indent.git
+[submodule "files/.vim/bundle/vim-gitgutter"]
+	path = files/.vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
