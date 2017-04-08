@@ -70,9 +70,6 @@
 [submodule "files/.vim/bundle/vim-go"]
 	path = files/.vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule "files/.vim/bundle/vim-php-html"]
-	path = files/.vim/bundle/vim-php-html
-	url = https://github.com/tamurayoshiya/php.vim-html-enhanced.git
 [submodule "files/.vim/bundle/plantuml-syntax"]
 	path = files/.vim/bundle/plantuml-syntax
 	url = https://github.com/aklt/plantuml-syntax.git
@@ -91,3 +88,6 @@
 [submodule "files/.vim/bundle/auto-ctags"]
 	path = files/.vim/bundle/auto-ctags
 	url = https://github.com/soramugi/auto-ctags.vim.git
+[submodule "files/.vim/bundle/vim-php-html-indent"]
+	path = files/.vim/bundle/vim-php-html-indent
+	url = https://github.com/berrygoudswaard/vim-php-html-indent.git
