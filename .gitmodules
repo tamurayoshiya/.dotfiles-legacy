@@ -88,3 +88,6 @@
 [submodule "files/.vim/bundle/vim-json"]
 	path = files/.vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
+[submodule "files/.vim/bundle/auto-ctags"]
+	path = files/.vim/bundle/auto-ctags
+	url = https://github.com/soramugi/auto-ctags.vim.git
