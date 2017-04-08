@@ -94,3 +94,6 @@
 [submodule "files/.vim/bundle/vim-gitgutter"]
 	path = files/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "files/.vim/bundle/yankround"]
+	path = files/.vim/bundle/yankround
+	url = https://github.com/LeafCage/yankround.vim.git
