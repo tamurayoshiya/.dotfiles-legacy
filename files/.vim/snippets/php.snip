@@ -1,9 +1,9 @@
 snippet p
-	<?php ${1} ?>
+	<?= ${1} ?>
 
 snippet a
 options word
-	array(${1})
+	[${1}]
 
 snippet e
 options word
@@ -15,47 +15,53 @@ options word
 
 snippet m
 options word
-	$this->${1:model_name}->${2}
+	$this->${1}->${2}
 
 snippet t
 options word
 	$this->
+
+snippet g
+options word
+	$this->Twb->g('${1}')
 
 snippet dc
 	<?php debug(${1}); ?>
 
 snippet set
 	$this->set(compact(
-		'${1:target}'
+		'${1}'
 	));
 
 snippet foreach
-	foreach (${1:args} as ${2:arg}) {
+	foreach (${1} as ${2}) {
 		${3}
 	}
 
 snippet if
-	if (${1:conditions}) {
+	if (${1}) {
 		${2}
 	}
 
+snippet try
+	try {
+        ${1}
+    } catch (RuntimeException $ex) {
+        return false;
+	}
+
 snippet foreach_ctp
-	<?php foreach (${1:args} as ${2:arg}): ?>
+	<?php foreach (${1} as ${2}): ?>
 		${3}
 	<?php endforeach ?>
 
 snippet if_ctp
-	<?php if (${1:conditions}): ?>
+	<?php if (${1}): ?>
 		${2}
 	<?php endif ?>
 
 snippet element
-	<?php echo $this->element(
-		'${1:element_name}',
-		array(
-		    ${2:args}
-		)
-	); ?>
+	<?= $this->element('${1}', [${2}]); ?>
 
 snippet data
 options word
@@ -63,58 +69,66 @@ options word
 
 snippet find
 	$this->find(
-		'${1:type}',
-		array(
-			'conditions' => array(
-				${2:conditions}
-			),
-		)
+		'${1}',
+		[
+			'conditions' => [
+				${2}
+			],
+		]
 	);
 
 snippet findById
-	$this->findById(${1:id});
+	$this->findById(${1});
 
 snippet findCount
 	$this->find(
 		'count',
-		array(
-			'conditions' => array(
-				${1:type}
-			),
-		)
+		[
+			'conditions' => [
+				${1}
+			],
+		]
 	);
 
 snippet public
 	/**
-	 * ${1:comment}
+	 * ${1}
 	 *
-	 * @access public
 	 * @param
 	 * @return
 	 */
-	 public function ${2:func_name} ()
-	 {
+	public function ${2} ()
+	{
 		${3}
-	 }
+	}
+
+snippet protected
+	/**
+	 * ${1}
+	 *
+	 * @param
+	 * @return
+	 */
+	protected function ${2} ()
+	{
+		${3}
+	}
 
 snippet private
 	/**
-	 * ${1:comment}
+	 * ${1}
 	 *
-	 * @access private
 	 * @param
 	 * @return
 	 */
-	 private function ${2:func_name} ()
-	 {
+	private function ${2} ()
+	{
 		${3}
-	 }
+	}
 
 snippet link
-	<?php echo $this->Html->link(
-		${1:text},
-		${2:url},
-		array(
-			'${3:args}'
-		)
+	<?= $this->Html->link(
+		"${1}",
+		['controller' => '${2}', 'action' => '${3}'],
+		['class' => '${4}', 'escape' => false]
 	); ?>
