@@ -248,6 +248,7 @@ function _showMenu() {
 }
 zle -N showMenu _showMenu
 bindkey '^N' showMenu
+alias m='bin/menu'
 
 # ll を実行
 function doLL() {
