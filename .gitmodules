@@ -106,3 +106,6 @@
 [submodule "files/.vim/bundle/tcomment"]
 	path = files/.vim/bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "files/.vim/bundle/ansi-esc"]
+	path = files/.vim/bundle/ansi-esc
+	url = https://github.com/vim-scripts/AnsiEsc.vim.git
