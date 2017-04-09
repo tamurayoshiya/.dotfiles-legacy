@@ -4,9 +4,6 @@
 [submodule "files/.vim/bundle/vim-ref"]
 	path = files/.vim/bundle/vim-ref
 	url = https://github.com/Shougo/unite.vim.git
-[submodule "files/.vim/bundle/neocomplcache"]
-	path = files/.vim/bundle/neocomplcache
-	url = https://github.com/Shougo/neocomplcache.git
 [submodule "files/.vim/bundle/unite-vim"]
 	path = files/.vim/bundle/unite-vim
 	url = https://github.com/Shougo/unite.vim.git
@@ -100,3 +97,6 @@
 [submodule "files/.vim/bundle/ctrlp"]
 	path = files/.vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "files/.vim/bundle/neocomplete"]
+	path = files/.vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
