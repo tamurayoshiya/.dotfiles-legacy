@@ -100,3 +100,6 @@
 [submodule "files/.vim/bundle/neocomplete"]
 	path = files/.vim/bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "files/.vim/bundle/splitjoin"]
+	path = files/.vim/bundle/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim.git
