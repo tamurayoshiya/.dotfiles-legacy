@@ -385,6 +385,15 @@ set tags+=.git/tags
 
 " vim-gitgutter 
 let g:gitgutter_highlight_lines = 1
+let g:gitgutter_sign_removed = '-'
+highlight GitGutterAddLine gui=bold ctermbg=235
+highlight GitGutterChangeLine gui=bold ctermbg=235
+highlight GitGutterDeleteLine gui=bold ctermbg=235
+highlight GitGutterChangeDeleteLine gui=bold ctermbg=235
+highlight GitGutterAdd ctermbg=34 ctermfg=15
+highlight GitGutterChange ctermbg=3 ctermfg=15
+highlight GitGutterDelete ctermbg=124
+highlight GitGutterChangeDelete ctermbg=13
 
 " yankround-vim
 nmap p <Plug>(yankround-p)
