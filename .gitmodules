@@ -7,9 +7,6 @@
 [submodule "files/.vim/bundle/unite-vim"]
 	path = files/.vim/bundle/unite-vim
 	url = https://github.com/Shougo/unite.vim.git
-[submodule "files/.vim/bundle/vim-powerline"]
-	path = files/.vim/bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "files/.vim/bundle/syntastic"]
 	path = files/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
