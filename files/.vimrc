@@ -480,11 +480,8 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
-" nerdtree-tabs
-
-if argc() == 0
-    let g:nerdtree_tabs_open_on_console_startup = 1
-end
+" vim-airline
+set laststatus=2
 
 " --------------------------------------------------------------
 " --------------------- その他

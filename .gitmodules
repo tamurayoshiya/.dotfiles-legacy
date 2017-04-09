@@ -103,9 +103,6 @@
 [submodule "files/.vim/bundle/tcomment"]
 	path = files/.vim/bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "files/.vim/bundle/vim-nerdtree-tabs"]
-	path = files/.vim/bundle/vim-nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "files/.vim/bundle/vim-airline"]
 	path = files/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
