@@ -236,7 +236,9 @@ if type colordiff 2>/dev/null 1>/dev/null; then
 fi
 
 # ctags
-alias ctags="`brew --prefix`/bin/ctags"
+if [ "$(uname)" == 'Darwin' ]; then
+    alias ctags="`brew --prefix`/bin/ctags"
+fi
 
 # --------------------------------------------------------------
 # --------------------- キーバインド
