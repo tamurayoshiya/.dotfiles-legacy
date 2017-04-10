@@ -477,8 +477,8 @@ nmap P <Plug>(yankround-P)
 nmap gp <Plug>(yankround-gp)
 xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
+nmap yp <Plug>(yankround-prev)
+nmap yn <Plug>(yankround-next)
 
 " vim-airline
 set laststatus=2
@@ -496,10 +496,6 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
 nmap <C-k> :TagbarToggle<CR>
-
-" ctrlp
-let g:ctrlp_map = '<C-n>'
-let g:ctrlp_cmd = 'CtrlP'
 
 " --------------------------------------------------------------
 " --------------------- その他
