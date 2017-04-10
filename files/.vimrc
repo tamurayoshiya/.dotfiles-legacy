@@ -495,7 +495,7 @@ let g:tagbar_width = 30
 let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
-nmap <C-l> :TagbarToggle<CR>
+nmap <C-k> :TagbarToggle<CR>
 
 
 " --------------------------------------------------------------
