@@ -489,6 +489,15 @@ let g:airline#extensions#tabline#tab_nr_type= 2
 let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" tagbar-phpctags
+let g:tagbar_phpctags_bin='~/.dotfiles/files/.vim/bin/phpctags'
+let g:tagbar_width = 30
+let g:tagbar_autoshowtag = 1
+let g:tagbar_left = 1
+let g:tagbar_map_togglesort = "r"
+nmap <C-l> :TagbarToggle<CR>
+
+
 " --------------------------------------------------------------
 " --------------------- その他
 " --------------------------------------------------------------
