@@ -166,13 +166,6 @@ compdef mosh=ssh
 
 source ~/.dotfiles/lib/z/z.sh
 
-# gtm
-# https://github.com/git-time-metric/gtm-terminal-plugin
-if type gtm 2>/dev/null 1>/dev/null; then
-    alias PWD="pwd"
-    source ~/.dotfiles/lib/.gtm-terminal-plugin/gtm-plugin.sh
-fi
-
 # --------------------------------------------------------------
 # --------------------- エイリアス
 # --------------------------------------------------------------
