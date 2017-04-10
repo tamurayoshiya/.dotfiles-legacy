@@ -168,8 +168,7 @@ source ~/.dotfiles/lib/z/z.sh
 
 # gtm
 # https://github.com/git-time-metric/gtm-terminal-plugin
-if type gtm 2>/dev/null 1>/dev/null 
-then
+if type gtm 2>/dev/null 1>/dev/null; then
     alias PWD="pwd"
     source ~/.dotfiles/lib/.gtm-terminal-plugin/gtm-plugin.sh
 fi
@@ -232,8 +231,8 @@ cdls ()
 alias cd="cdls"
 
 # colordiff
-if [[ -x `which colordiff` ]]; then
-      alias diff='colordiff'
+if type colordiff 2>/dev/null 1>/dev/null; then
+    alias diff='colordiff'
 fi
 
 # ctags
