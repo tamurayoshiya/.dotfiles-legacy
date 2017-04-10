@@ -497,6 +497,9 @@ let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
 nmap <C-k> :TagbarToggle<CR>
 
+" ctrlp
+let g:ctrlp_map = '<C-n>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " --------------------------------------------------------------
 " --------------------- その他
