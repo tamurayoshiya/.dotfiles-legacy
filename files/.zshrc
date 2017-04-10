@@ -168,8 +168,10 @@ source ~/.dotfiles/lib/z/z.sh
 
 # gtm
 # https://github.com/git-time-metric/gtm-terminal-plugin
-
-source ~/.dotfiles/lib/.gtm-terminal-plugin/gtm-plugin.sh
+if type gtm 2>/dev/null 1>/dev/null 
+then
+    source ~/.dotfiles/lib/.gtm-terminal-plugin/gtm-plugin.sh
+fi
 
 # --------------------------------------------------------------
 # --------------------- エイリアス
