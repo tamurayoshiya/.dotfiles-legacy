@@ -504,6 +504,8 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type= 2
 let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+" カッコよくなるがfontのインストールが必要
+"let g:airline_powerline_fonts = 1
 
 " tagbar-phpctags
 let g:tagbar_phpctags_bin='~/.dotfiles/files/.vim/bin/phpctags'
