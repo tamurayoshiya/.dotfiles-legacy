@@ -112,3 +112,6 @@
 [submodule "files/.vim/bundle/tagbar"]
 	path = files/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "files/.vim/bundle/vim-surround"]
+	path = files/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
