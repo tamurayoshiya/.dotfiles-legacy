@@ -511,6 +511,7 @@ let g:tagbar_width = 30
 let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
+let g:tagbar_autofocus = 1
 nmap <C-k> :TagbarToggle<CR>
 
 " --------------------------------------------------------------
