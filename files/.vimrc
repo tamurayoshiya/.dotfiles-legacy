@@ -456,7 +456,23 @@ augroup END
 " auto-ctags.vim
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git']
+let g:auto_ctags_tags_args = join([
+    \ '--languages=php',
+    \ '--recurse',
+	\ '--sort=yes',
+    \ '--tag-relative=yes',
+ 	\ '--php-kinds=+cfidv',
+    \ '--regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/',
+    \ '--regex-PHP=/interface\s+([^ ]+)/\1/c/',
+    \ '--regex-PHP=/(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/',
+    \ '--regex-PHP=/trait ([^ ]*)/\1/c/',
+ 	\ '--exclude=.git',
+ 	\ '--exclude=bin',
+ 	\ '--exclude=node_moduless/',
+ 	\ '--exclude=*.js'
+\ ], ' ')
 set tags+=.git/tags
+nnoremap <C-]> g<C-]>
 
 " vim-gitgutter 
 let g:gitgutter_highlight_lines = 1
