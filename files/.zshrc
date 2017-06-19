@@ -430,3 +430,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tamurayoshiya/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/tamurayoshiya/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tamurayoshiya/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/tamurayoshiya/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
