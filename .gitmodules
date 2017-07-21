@@ -115,3 +115,6 @@
 [submodule "files/.vim/bundle/vim-surround"]
 	path = files/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "files/.vim/bundle/godoctor"]
+	path = files/.vim/bundle/godoctor
+	url = https://github.com/godoctor/godoctor.vim.git

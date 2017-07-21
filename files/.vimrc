@@ -104,12 +104,6 @@ map <C-l> <C-W>l
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
-"タブUIの時のタブ移動キーマップ
-nmap <C-S-tab> <Esc>:tabprevious<CR>
-nmap <C-tab>   <Esc>:tabnext<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
-
 "自動インデント時にタブが2つ付くのを防ぐ
 set softtabstop=4
 set shiftwidth=4
@@ -151,6 +145,13 @@ autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
 filetype plugin indent on
 " JSONファイルのconcealを無効に
 let g:vim_json_syntax_conceal = 0
+
+" オムニ補完
+imap <C-f> <C-x><C-o>
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Turn off paste mode when leaving insert
+autocmd InsertLeave * set nopaste
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
@@ -391,13 +392,14 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "let g:neocomplete#enable_auto_select = 1
 "let g:neocomplete#disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
+set completeopt-=preview
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType go setlocal omnifunc=go#complete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -406,10 +408,6 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (その他)
@@ -439,19 +437,6 @@ let g:syntastic_echo_current_error = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_check_on_wq = 0
-
-
-" ==================== バイナリモード ==================== "
-"バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）
-augroup BinaryXXD
-    autocmd!
-    autocmd BufReadPre  *.bin let &binary =1
-    autocmd BufReadPost * if &binary | silent %!xxd -g 1
-    autocmd BufReadPost * set ft=xxd | endif
-    autocmd BufWritePre * if &binary | %!xxd -r | endif
-    autocmd BufWritePost * if &binary | silent %!xxd -g 1
-    autocmd BufWritePost * set nomod | endif
-augroup END
 
 " auto-ctags.vim
 let g:auto_ctags = 1
@@ -499,7 +484,7 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
 let g:tagbar_autofocus = 1
-nmap <C-k> :TagbarToggle<CR>
+nmap <C-h> :TagbarToggle<CR>
 
 " --------------------------------------------------------------
 " --------------------- その他
@@ -552,3 +537,13 @@ endfunction
 let g:endtagcommentFormat = '<!-- /%id%class -->'
 nnoremap ,t :<C-u>call Endtagcomment()<CR>
 
+
+"vim-go
+
+autocmd BufWrite *.{go} :GoImports
+
+let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
+
+let g:syntastic_mode_map = { 'mode': 'passive',
+    \ 'active_filetypes': ['go'] }
+let g:syntastic_go_checkers = ['go', 'golint']

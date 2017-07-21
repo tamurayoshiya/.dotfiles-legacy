@@ -291,17 +291,19 @@ bindkey "^[^g" git-cheat
 # --------------------- キーバインド
 # --------------------------------------------------------------
 
-# bin/menuスクリプトがある場合実行
-function _showMenu() {
-    if [ -e ./bin/menu ]; then
+# bin/mccスクリプトがある場合実行
+function _showMcc() {
+    if [ -e ./bin/mcc ]; then
         exec < /dev/tty
-        echo bin/menu
-        ./bin/menu
+        echo bin/mcc
+        ./bin/mcc
     fi
     zle reset-prompt
 }
-zle -N showMenu _showMenu
-bindkey '^N' showMenu
+zle -N showMcc _showMcc
+bindkey '^N' showMcc
+
+# bin/menuスクリプトがある場合実行
 alias m='bin/menu'
 
 # ll を実行
