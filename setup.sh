@@ -18,3 +18,6 @@ if [ ! -e $target ]; then
     cp $HOME/.dotfiles/files/.vim/bundle/tagbar-phpctags/bin/phpctags $target
     chmod +x $target
 fi
+
+# vimprocをmake
+cd $HOME/.dotfiles/files/.vim/bundle/vimproc/; make

@@ -153,6 +153,13 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
+" set <Space> for Leader
+" http://postd.cc/how-to-boost-your-vim-productivity/
+let mapleader = "\<Space>"
+
+" http://qiita.com/szk3/items/e33df9acea5050f29a07
+set synmaxcol=1000
+
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (Vim タブ関連)
 " --------------------------------------------------------------
@@ -408,6 +415,11 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"
+let g:neocomplete#auto_complete_delay = 1000
+
+let g:haskellmode_completion_ghc = 0 " Disable haskell-vim omnifunc
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (その他)
@@ -426,6 +438,62 @@ nmap <C-i> :<C-u>NERDTreeToggle<CR>
 let NERDTreeShowHidden = 1
 
 
+
+" " quickfix
+" " Maximize the window after entering it, be sure to keep the quickfix window
+" " at the specified height.
+" au WinEnter * call MaximizeAndResizeQuickfix(8)
+"
+" " Maximize current window and set the quickfix window to the specified height.
+" function MaximizeAndResizeQuickfix(quickfixHeight)
+"   " Redraw after executing the function.
+"   set lazyredraw
+"   " Ignore WinEnter events for now.
+"   set ei=WinEnter
+"   " Maximize current window.
+"   wincmd _
+"   " If the current window is the quickfix window
+"   if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
+"     " Maximize previous window, and resize the quickfix window to the
+"     " specified height.
+"     wincmd p
+"     resize
+"     wincmd p
+"     exe "resize " . a:quickfixHeight
+"   else
+"     " Current window isn't the quickfix window, loop over all windows to
+"     " find it (if it exists...)
+"     let i = 1
+"     let currBufNr = winbufnr(i)
+"     while (currBufNr != -1)
+"       " If the buffer in window i is the quickfix buffer.
+"       if (getbufvar(currBufNr, "&buftype") == "quickfix")
+"         " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
+"         " window.
+"         exe i . "wincmd w"
+"         exe "resize " . a:quickfixHeight
+"         wincmd p
+"         break
+"       endif
+"       let i = i + 1
+"       let currBufNr = winbufnr(i)
+"     endwhile
+"   endif
+"   set ei-=WinEnter
+"   set nolazyredraw
+" endfunction
+"
+" " Remap ,m to make and open error window if there are any errors. If there
+" " weren't any errors, the current window is maximized.
+" map <silent> ,m :mak<CR><CR>:cw<CR>:call MaximizeIfNotQuickfix()<CR>
+"
+" " Maximizes the current window if it is not the quickfix window.
+" function MaximizeIfNotQuickfix()
+"   if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
+"     wincmd _
+"   endif
+" endfunction
+
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -434,9 +502,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_echo_current_error = 1
-let g:syntastic_auto_loc_list = 2
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'] }
+let g:syntastic_go_checkers = ['go', 'golint']
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['haskell'] }
+let g:syntastic_haskell_checkers = ['hlint', 'ghc_mod']
 
 " auto-ctags.vim
 let g:auto_ctags = 1
@@ -447,10 +519,10 @@ nnoremap <C-]> g<C-]>
 " vim-gitgutter 
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_sign_removed = '-'
-highlight GitGutterAddLine gui=bold ctermbg=235
-highlight GitGutterChangeLine gui=bold ctermbg=235
-highlight GitGutterDeleteLine gui=bold ctermbg=235
-highlight GitGutterChangeDeleteLine gui=bold ctermbg=235
+highlight GitGutterAddLine gui=bold ctermbg=233
+highlight GitGutterChangeLine gui=bold ctermbg=233
+highlight GitGutterDeleteLine gui=bold ctermbg=233
+highlight GitGutterChangeDeleteLine gui=bold ctermbg=233
 highlight GitGutterAdd ctermbg=34 ctermfg=15
 highlight GitGutterChange ctermbg=3 ctermfg=15
 highlight GitGutterDelete ctermbg=124
@@ -484,7 +556,7 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
 let g:tagbar_map_togglesort = "r"
 let g:tagbar_autofocus = 1
-nmap <C-h> :TagbarToggle<CR>
+nmap <C-y> :TagbarToggle<CR>
 
 " --------------------------------------------------------------
 " --------------------- その他
@@ -544,6 +616,18 @@ autocmd BufWrite *.{go} :GoImports
 
 let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 
-let g:syntastic_mode_map = { 'mode': 'passive',
-    \ 'active_filetypes': ['go'] }
-let g:syntastic_go_checkers = ['go', 'golint']
+"ghcmod.vim (haskell)
+autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+let g:necoghc_enable_detailed_browse = 1
+hi ghcmodType ctermbg=lightcyan
+let g:ghcmod_type_highlight = 'ghcmodType'
+
+au BufNewFile,BufRead *.hs map <Leader>t :GhcModType<cr>
+au BufNewFile,BufRead *.hs map <Leader>tt :GhcModTypeClear<cr>
+let g:hoogle_search_count=15
+let g:hoogle_search_buf_name='Hoogle'
+au BufNewFile,BufRead *.hs map <silent> <leader>h :Hoogle<CR>
+au BufNewFile,BufRead *.hs map <buffer> <Leader>hh :HoogleClose<CR>
+
+
+au BufRead,BufNewFile *.qmu set filetype=qmu

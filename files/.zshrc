@@ -199,7 +199,7 @@ alias t='TIG_LS_REMOTE="git ls-remote . master dev origin/* develop development 
 ## エイリアス - git
 alias gco="git checkout"
 alias gst="git status"
-alias gad="git add ."
+alias ga="git add ."
 alias gc="git commit"
 alias gdi="git diff"
 alias gbr="git branch"
@@ -323,19 +323,6 @@ function gitStatus() {
 }
 zle -N gitStatus
 bindkey '^G' gitStatus
-
-# sentaku explorerを実行
-function sentaku() {
-    exec < /dev/tty
-    echo sentaku
-    jump=`sh ~/.dotfiles/lib/sentaku/ex_explorer.sh`
-    cd $jump
-    cd ../`basename $jump`
-    ls -l
-    zle reset-prompt
-}
-zle -N sentaku
-bindkey '^F' sentaku
 
 # --------------------------------------------------------------
 # --------------------- コマンド

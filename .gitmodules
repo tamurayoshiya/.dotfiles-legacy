@@ -10,9 +10,6 @@
 [submodule "files/.vim/bundle/syntastic"]
 	path = files/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "files/.vim/bundle/vim-guicolorscheme"]
-	path = files/.vim/bundle/vim-guicolorscheme
-	url = https://github.com/thinca/vim-guicolorscheme.git
 [submodule "files/.vim/bundle/nerdtree"]
 	path = files/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -43,24 +40,15 @@
 [submodule "files/.vim/bundle/neosnippet-snippets"]
 	path = files/.vim/bundle/neosnippet-snippets
 	url = https://github.com/Shougo/neosnippet-snippets.git
-[submodule "files/.vim/bundle/gitv"]
-	path = files/.vim/bundle/gitv
-	url = https://github.com/gregsexton/gitv.git
 [submodule "files/.vim/bundle/vim-fugitive"]
 	path = files/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "files/.vim/bundle/gitu"]
-	path = files/.vim/bundle/gitu
-	url = https://github.com/pebble8888/gitu.vim.git
 [submodule "files/.vim/bundle/vim-less"]
 	path = files/.vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
 [submodule "files/.vim/bundle/vim-coffee-script"]
 	path = files/.vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "files/.vim/bundle/vim-haskell-indent"]
-	path = files/.vim/bundle/vim-haskell-indent
-	url = https://github.com/itchyny/vim-haskell-indent.git
 [submodule "files/.vim/bundle/vim-go"]
 	path = files/.vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
@@ -100,12 +88,6 @@
 [submodule "files/.vim/bundle/tcomment"]
 	path = files/.vim/bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "files/.vim/bundle/vim-airline"]
-	path = files/.vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "files/.vim/bundle/vim-airline-themes"]
-	path = files/.vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "files/.vim/bundle/tagbar-phpctags"]
 	path = files/.vim/bundle/tagbar-phpctags
 	url = https://github.com/vim-scripts/tagbar-phpctags.git
@@ -118,3 +100,24 @@
 [submodule "files/.vim/bundle/godoctor"]
 	path = files/.vim/bundle/godoctor
 	url = https://github.com/godoctor/godoctor.vim.git
+[submodule "files/.vim/bundle/neco-ghc"]
+	path = files/.vim/bundle/neco-ghc
+	url = https://github.com/eagletmt/neco-ghc.git
+[submodule "files/.vim/bundle/haskell-vim"]
+	path = files/.vim/bundle/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim.git
+[submodule "files/.vim/bundle/vimproc"]
+	path = files/.vim/bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "files/.vim/bundle/ghcmod-vim"]
+	path = files/.vim/bundle/ghcmod-vim
+	url = https://github.com/eagletmt/ghcmod-vim.git
+[submodule "files/.vim/bundle/vim-hoogle"]
+	path = files/.vim/bundle/vim-hoogle
+	url = https://github.com/Twinside/vim-hoogle.git
+[submodule "files/.vim/bundle/vim-stylish-haskell"]
+	path = files/.vim/bundle/vim-stylish-haskell
+	url = https://github.com/nbouscal/vim-stylish-haskell.git
+[submodule "files/.vim/bundle/benchvimrc-vim"]
+	path = files/.vim/bundle/benchvimrc-vim
+	url = http://github.com/mattn/benchvimrc-vim.git
