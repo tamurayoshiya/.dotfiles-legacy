@@ -118,9 +118,6 @@
 [submodule "files/.vim/bundle/vim-stylish-haskell"]
 	path = files/.vim/bundle/vim-stylish-haskell
 	url = https://github.com/nbouscal/vim-stylish-haskell.git
-[submodule "files/.vim/bundle/benchvimrc-vim"]
-	path = files/.vim/bundle/benchvimrc-vim
-	url = http://github.com/mattn/benchvimrc-vim.git
 [submodule "files/.vim/vim-airline-themes"]
 	path = files/.vim/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
