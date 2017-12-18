@@ -155,7 +155,7 @@ autocmd InsertLeave * set nopaste
 
 " set <Space> for Leader
 " http://postd.cc/how-to-boost-your-vim-productivity/
-let mapleader = "\<Space>"
+let mapleader = ","
 
 " http://qiita.com/szk3/items/e33df9acea5050f29a07
 set synmaxcol=1000
@@ -517,7 +517,7 @@ set tags+=.git/tags
 nnoremap <C-]> g<C-]>
 
 " vim-gitgutter 
-let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_lines = 0
 let g:gitgutter_sign_removed = '-'
 highlight GitGutterAddLine gui=bold ctermbg=233
 highlight GitGutterChangeLine gui=bold ctermbg=233
@@ -607,16 +607,37 @@ function! Endtagcomment()
 endfunction
 
 let g:endtagcommentFormat = '<!-- /%id%class -->'
-nnoremap ,t :<C-u>call Endtagcomment()<CR>
+nnoremap .t :<C-u>call Endtagcomment()<CR>
 
 
+"-------------------
 "vim-go
+"-------------------
 
 autocmd BufWrite *.{go} :GoImports
 
 let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
+"-------------------
+"slimv (lisp)
+"-------------------
+
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-CLISP "clisp -i ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+let g:slimv_repl_split = 4
+let g:slimv_repl_name = 'REPL'
+let g:slimv_repl_simple_eval = 0
+let g:slimv_lisp = '/usr/local/bin/clisp'
+let g:slimv_impl = 'clisp'
+let g:slimv_preferred = 'clisp'
+let g:lisp_rainbow=1
+let g:paredit_electric_return = 0
+
+"-------------------
 "ghcmod.vim (haskell)
+"-------------------
+"
 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 let g:necoghc_enable_detailed_browse = 1
 hi ghcmodType ctermbg=lightcyan

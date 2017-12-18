@@ -121,3 +121,12 @@
 [submodule "files/.vim/vim-airline-themes"]
 	path = files/.vim/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "files/.vim/bundle/vim-clojure-static"]
+	path = files/.vim/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
+[submodule "files/.vim/bundle/vim-fireplace"]
+	path = files/.vim/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace.git
+[submodule "files/.vim/bundle/slimv"]
+	path = files/.vim/bundle/slimv
+	url = https://github.com/kovisoft/slimv.git

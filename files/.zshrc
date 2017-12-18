@@ -1,5 +1,6 @@
 ## 文字コードの設定
 export LANG=ja_JP.UTF-8
+## 環境変数
 export PATH="/usr/local/mysql/bin:/sbin:$PATH"
 
 # --------------------------------------------------------------
@@ -129,11 +130,6 @@ fi
 # --------------------- 拡張設定
 # --------------------------------------------------------------
 
-# node.js(nvm)
-if [ -e ~/.nvm/nvm.sh ]; then
-    source ~/.nvm/nvm.sh
-fi
-
 # SSH agentを起動
 # ssh-add ~/.ssh/id_dsa で鍵とパスフレーズを紐つけて登録
 echo -n "ssh-agent: "
@@ -229,7 +225,7 @@ if type colordiff 2>/dev/null 1>/dev/null; then
 fi
 
 # ctags
-if [ "$(uname)" == 'Darwin' ]; then
+if [ "$(uname)" = 'Darwin' ]; then
     alias ctags="`brew --prefix`/bin/ctags"
 fi
 
@@ -245,11 +241,8 @@ dir=~/.dotfiles/lib/zsh-completions/
 if [ -e $dir ]; then
     fpath=($dir $fpath)
     plugins+=(zsh-completions)
-    autoload -U compinit && compinit
 fi
 
-autoload -U compinit
-compinit
 zstyle ':completion:*:default' menu select=2
 
 # 補完関数の表示を強化する
@@ -293,10 +286,10 @@ bindkey "^[^g" git-cheat
 
 # bin/mccスクリプトがある場合実行
 function _showMcc() {
-    if [ -e ./bin/mcc ]; then
+    if [ -e ./mcc.yml ]; then
         exec < /dev/tty
-        echo bin/mcc
-        ./bin/mcc
+        echo mcc
+        mcc
     fi
     zle reset-prompt
 }
@@ -420,8 +413,13 @@ if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tamurayoshiya/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/tamurayoshiya/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+# direnv
+eval "$(direnv hook zsh)"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tamurayoshiya/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/tamurayoshiya/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+# loading nvm
+function load_nvm()
+{
+    if [ -e ~/.nvm/nvm.sh ]; then
+        source ~/.nvm/nvm.sh
+    fi
+}
