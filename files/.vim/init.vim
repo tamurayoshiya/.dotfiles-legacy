@@ -1,1 +1,1 @@
-/Users/tamurayoshiya/.vimrc
+/home/y_tamura/.vimrc

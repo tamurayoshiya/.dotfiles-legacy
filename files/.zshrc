@@ -110,11 +110,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # sudo に対して環境変数 PATH を継承させる設定
 alias sudo='sudo env PATH=$PATH'
 
-# -u を認識しなくて、userを変更してコマンドが実行できないため
-# http://d.hatena.ne.jp/japanrock_pg/20090527/1243426081
-#export PATH=/usr/local/bin:$PATH
-#alias sudo="sudo PATH=$PATH"
-
 # cdr
 autoload -Uz is-at-least
 if is-at-least 4.3.11
@@ -271,15 +266,6 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46
 # ファイル補完候補に色を付ける
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# cheat-sheet
-cheat-sheet () { zle -M "`cat ~/zsh/cheat-sheet.conf`" }
-zle -N cheat-sheet
-bindkey "^[^h" cheat-sheet
-
-git-cheat () { zle -M "`cat ~/zsh/git-cheat.conf`" }
-zle -N git-cheat
-bindkey "^[^g" git-cheat
-
 # --------------------------------------------------------------
 # --------------------- キーバインド
 # --------------------------------------------------------------
@@ -321,38 +307,6 @@ bindkey '^G' gitStatus
 # --------------------- コマンド
 # --------------------------------------------------------------
 
-
-# コミット間の差分を取得して、zipで固める
-# --format=zip を付けるとzipで固めてくれます。
-# --prefix=root/ は抽出したファイルをrootディレクトリに入れた状態にしてくれます。
-# -o archive.zip で出力先と出力名を指定しています。
-# 引数なしで git_diff_archive と呼ぶと HEAD を丸っとzipにします。
-# 引数に数値を指定すると、HEAD と HEAD~数値 の差分を抽出します。
-# 引数にコミット識別子(IDとかHEADとかHEAD^とかdiffの引数として使えるもの)を指定すると、
-# HEAD と コミット識別子 の差分を抽出します。)
-# コミット識別子を2つ渡すと、その2つのコミットの差分を抽出します。
-# ちょっと前のバージョンの差分が欲しいとか言われたときに使えます。
-# 渡す順番は新しいコミット、古いコミットの順番で渡してください。
-# http://qiita.com/kaminaly/items/28f9cb4e680deb700833
-
-function git_diff_archive() 
-{
-    local diff=""
-    local h="HEAD"
-    if [ $# -eq 1 ]; then
-        if expr "$1" : '[0-9]*' > /dev/null ; then
-            diff="HEAD HEAD~${1}"
-        else
-            diff="HEAD ${1}"
-        fi
-    elif [ $# -eq 2 ]; then
-        diff="${1} ${2}"
-        h=$1
-    fi
-    if [ "$diff" != "" ]; diff="git diff --name-only ${diff}"
-    git archive --format=zip --prefix=root/ $h `eval $diff` -o archive.zip
-}
-
 # rmコマンド実行時に、ファイルを削除するのではなく、
 # /tmp/.trash/[user]ディレクトリに移動する
 function soft_rm()
@@ -383,30 +337,6 @@ function soft_rm()
 }
 alias rm="soft_rm"
 
-# 全てのブランチをpull
-function git_pull_all()
-{
-    for branch in `git branch -r | grep -v HEAD | awk -F'/' '{print $2}'`; do git checkout $branch; git pull; done
-}
-
-# Docker QuickStart Terminal.appへのショートカット
-function docker_quick_start()
-{
-    docker ps >/dev/null 2>&1
-    # 正常終了しない場合
-    # （dockerデーモンが起動しない場合）
-    if [ ! $? = 0 ]; then
-        start=/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh
-        if [ -e "$start" ]; then
-            "$start"
-        else
-            echo "Docker Quickstart Terminal.appが見つかりません"
-        fi
-    else
-        echo "既にDockerデーモンが起動しています"
-    fi
-}
-
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
@@ -415,11 +345,3 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 # direnv
 eval "$(direnv hook zsh)"
-
-# loading nvm
-function load_nvm()
-{
-    if [ -e ~/.nvm/nvm.sh ]; then
-        source ~/.nvm/nvm.sh
-    fi
-}
