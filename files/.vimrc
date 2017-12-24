@@ -43,7 +43,7 @@ set directory=$HOME/.vimbackup
 "ファイル保存ダイアログの初期ディレクトリをバッファファイル位置に設定
 set browsedir=buffer
 "クリップボードをWindowsと連携
-set clipboard=unnamed,autoselect
+set clipboard=unnamed
 "Vi互換をオフ
 set nocompatible
 "タブの代わりに空白文字を挿入する
@@ -268,6 +268,9 @@ endfunction
 
 " unite-outline(開いているファイルのクラスのメンバ一覧表示)
 nnoremap <silent><Space>fo : <C-u>Unite -vertical -winwidth=40 outline<CR>
+
+" sort unite buffer by path
+call unite#custom_source('buffer', 'sorters', 'sorter_word')
 
 " --------------------------------------------------------------
 " --------------------- 拡張設定 (vim-indent-guides)
