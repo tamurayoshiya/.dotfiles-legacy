@@ -440,63 +440,6 @@ let g:NERDTreeWinPos = "right"
 nmap <C-i> :<C-u>NERDTreeToggle<CR>
 let NERDTreeShowHidden = 1
 
-
-
-" " quickfix
-" " Maximize the window after entering it, be sure to keep the quickfix window
-" " at the specified height.
-" au WinEnter * call MaximizeAndResizeQuickfix(8)
-"
-" " Maximize current window and set the quickfix window to the specified height.
-" function MaximizeAndResizeQuickfix(quickfixHeight)
-"   " Redraw after executing the function.
-"   set lazyredraw
-"   " Ignore WinEnter events for now.
-"   set ei=WinEnter
-"   " Maximize current window.
-"   wincmd _
-"   " If the current window is the quickfix window
-"   if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
-"     " Maximize previous window, and resize the quickfix window to the
-"     " specified height.
-"     wincmd p
-"     resize
-"     wincmd p
-"     exe "resize " . a:quickfixHeight
-"   else
-"     " Current window isn't the quickfix window, loop over all windows to
-"     " find it (if it exists...)
-"     let i = 1
-"     let currBufNr = winbufnr(i)
-"     while (currBufNr != -1)
-"       " If the buffer in window i is the quickfix buffer.
-"       if (getbufvar(currBufNr, "&buftype") == "quickfix")
-"         " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
-"         " window.
-"         exe i . "wincmd w"
-"         exe "resize " . a:quickfixHeight
-"         wincmd p
-"         break
-"       endif
-"       let i = i + 1
-"       let currBufNr = winbufnr(i)
-"     endwhile
-"   endif
-"   set ei-=WinEnter
-"   set nolazyredraw
-" endfunction
-"
-" " Remap ,m to make and open error window if there are any errors. If there
-" " weren't any errors, the current window is maximized.
-" map <silent> ,m :mak<CR><CR>:cw<CR>:call MaximizeIfNotQuickfix()<CR>
-"
-" " Maximizes the current window if it is not the quickfix window.
-" function MaximizeIfNotQuickfix()
-"   if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
-"     wincmd _
-"   endif
-" endfunction
-
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -509,7 +452,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['go'] }
-let g:syntastic_go_checkers = ['go', 'golint']
+let g:syntastic_go_checkers = ['golint']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['haskell'] }
 let g:syntastic_haskell_checkers = ['hlint', 'ghc_mod']
 
@@ -540,17 +483,6 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap yp <Plug>(yankround-prev)
 nmap yn <Plug>(yankround-next)
-
-" vim-airline
-set laststatus=2
-let g:airline_theme = 'kalisi'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#tab_nr_type= 2
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-" カッコよくなるがfontのインストールが必要
-"let g:airline_powerline_fonts = 1
 
 " tagbar-phpctags
 let g:tagbar_phpctags_bin='~/.dotfiles/files/.vim/bin/phpctags'
@@ -622,6 +554,7 @@ autocmd BufWrite *.{go} :GoImports
 let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
 "-------------------
 "slimv (lisp)
@@ -653,5 +586,13 @@ let g:hoogle_search_buf_name='Hoogle'
 au BufNewFile,BufRead *.hs map <silent> <leader>h :Hoogle<CR>
 au BufNewFile,BufRead *.hs map <buffer> <Leader>hh :HoogleClose<CR>
 
+"-------------------
+" ctrlp
+"-------------------
+
+let g:ctrlp_use_migemo = 1
+let g:ctrlp_clear_cache_on_exit = 0   " 終了時キャッシュをクリアしない
+let g:ctrlp_mruf_max            = 500 " MRUの最大記録数
+let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで開く
 
 au BufRead,BufNewFile *.qmu set filetype=qmu
